@@ -4,11 +4,12 @@ import SidebarFooter from "./SidebarFooter";
 
 function Sidebar() {
   return (
-    <aside className="flex h-screen w-72 flex-col border-r border-slate-800 bg-slate-950">
-
+  <aside className="flex h-dvh w-64 flex-col border-r border-slate-800 bg-slate-950">
       <SidebarBrand />
 
-      <SidebarNavigation />
+     <div className="flex-1 overflow-y-auto">
+  <SidebarNavigation />
+</div>
 
       <SidebarFooter />
 

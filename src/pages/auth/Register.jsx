@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 
 import {
@@ -16,22 +17,25 @@ import { Separator } from "@/components/ui/separator";
 
 function Register() {
   return (
-    <Card className="border-slate-800 bg-slate-900/70 backdrop-blur">
-
-      <CardHeader className="space-y-2">
-        <CardTitle className="text-2xl text-white">
+    <Card className="rounded-2xl border border-slate-800 bg-[#0F172A] shadow-2xl backdrop-blur-md">
+      <CardHeader className="space-y-3 pb-6">
+        <CardTitle className="text-3xl font-bold tracking-tight text-white">
           Create Your Account
         </CardTitle>
 
-        <CardDescription>
+        <CardDescription className="leading-relaxed text-slate-400">
           Start your workflow journey today.
         </CardDescription>
       </CardHeader>
 
       <CardContent className="space-y-6">
-
         <div className="space-y-2">
-          <Label htmlFor="name">Full Name</Label>
+          <Label
+            htmlFor="name"
+            className="text-sm font-medium text-slate-300"
+          >
+            Full Name
+          </Label>
 
           <Input
             id="name"
@@ -41,7 +45,12 @@ function Register() {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="email">Email</Label>
+          <Label
+            htmlFor="email"
+            className="text-sm font-medium text-slate-300"
+          >
+            Email
+          </Label>
 
           <Input
             id="email"
@@ -51,7 +60,12 @@ function Register() {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="password">Password</Label>
+          <Label
+            htmlFor="password"
+            className="text-sm font-medium text-slate-300"
+          >
+            Password
+          </Label>
 
           <Input
             id="password"
@@ -61,7 +75,10 @@ function Register() {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="confirmPassword">
+          <Label
+            htmlFor="confirmPassword"
+            className="text-sm font-medium text-slate-300"
+          >
             Confirm Password
           </Label>
 
@@ -72,12 +89,12 @@ function Register() {
           />
         </div>
 
-        <div className="flex items-start space-x-2">
+        <div className="flex items-start space-x-3 pt-1">
           <Checkbox id="terms" />
 
           <Label
             htmlFor="terms"
-            className="leading-5 cursor-pointer"
+            className="cursor-pointer text-sm leading-5 text-slate-300"
           >
             I agree to the Terms & Privacy Policy
           </Label>
@@ -85,34 +102,34 @@ function Register() {
 
         <Button
           type="submit"
-          className="w-full h-11 text-base font-semibold"
+          className="h-12 w-full rounded-lg bg-blue-600 text-base font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-500 active:scale-[0.98]"
         >
           Create Account
         </Button>
 
-        <div className="flex items-center gap-4">
-          <Separator className="flex-1" />
+        <div className="space-y-4">
+          <div className="flex items-center gap-4">
+            <Separator className="flex-1 bg-slate-700" />
 
-          <span className="text-sm text-slate-400">
-            OR
-          </span>
+            <span className="text-xs tracking-widest text-slate-500">
+              OR
+            </span>
 
-          <Separator className="flex-1" />
+            <Separator className="flex-1 bg-slate-700" />
+          </div>
+
+          <div className="text-center text-sm text-slate-400">
+            Already have an account?{" "}
+
+            <Link
+              to="/"
+              className="font-semibold text-blue-400 transition-colors hover:text-blue-300 hover:underline"
+            >
+              Sign In
+            </Link>
+          </div>
         </div>
-
-        <div className="text-center text-sm text-slate-400">
-          Already have an account?{" "}
-
-          <Link
-            to="/"
-            className="font-medium text-white hover:underline"
-          >
-            Sign In
-          </Link>
-        </div>
-
       </CardContent>
-
     </Card>
   );
 }

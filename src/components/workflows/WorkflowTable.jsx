@@ -1,8 +1,10 @@
+
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
+  CardDescription,
 } from "@/components/ui/card";
 
 import WorkflowRow from "./WorkflowRow";
@@ -40,63 +42,58 @@ function WorkflowTable() {
   ];
 
   return (
-    <Card className="border-slate-800 bg-slate-900/70">
-
+    <Card className="border-slate-800 bg-[#0F172A]">
       <CardHeader>
-        <CardTitle className="text-white">
+        <CardTitle className="text-xl font-semibold tracking-tight text-white">
           Workflow Definitions
         </CardTitle>
+
+        <CardDescription className="text-slate-400">
+          View, manage, and monitor all workflow definitions.
+        </CardDescription>
       </CardHeader>
 
       <CardContent>
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[720px] text-left">
+            <thead>
+              <tr className="border-b border-slate-800">
+                <th className="pb-4 text-sm font-medium text-slate-400">
+                  Workflow
+                </th>
 
-        <table className="w-full text-left">
+                <th className="pb-4 text-sm font-medium text-slate-400">
+                  Status
+                </th>
 
-          <thead>
+                <th className="pb-4 text-sm font-medium text-slate-400">
+                  Last Run
+                </th>
 
-            <tr className="border-b border-slate-800">
+                <th className="pb-4 text-sm font-medium text-slate-400">
+                  Updated
+                </th>
 
-              <th className="pb-3 text-slate-400">
-                Workflow
-              </th>
+                <th className="pb-4 text-sm font-medium text-slate-400 text-right">
+                  Actions
+                </th>
+              </tr>
+            </thead>
 
-              <th className="pb-3 text-slate-400">
-                Status
-              </th>
-
-              <th className="pb-3 text-slate-400">
-                Last Run
-              </th>
-
-              <th className="pb-3 text-slate-400">
-                Updated
-              </th>
-
-              <th className="pb-3 text-slate-400">
-                Actions
-              </th>
-
-            </tr>
-
-          </thead>
-
-          <tbody>
-
-            {workflows.map((workflow) => (
-              <WorkflowRow
-                key={workflow.id}
-                {...workflow}
-              />
-            ))}
-
-          </tbody>
-
-        </table>
-
+            <tbody>
+              {workflows.map((workflow) => (
+                <WorkflowRow
+                  key={workflow.id}
+                  {...workflow}
+                />
+              ))}
+            </tbody>
+          </table>
+        </div>
       </CardContent>
-
     </Card>
   );
 }
 
 export default WorkflowTable;
+

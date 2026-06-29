@@ -4,27 +4,27 @@ import { Link } from "react-router-dom";
 
 function WorkflowHeader() {
   return (
-    <section className="flex items-center justify-between">
-
+    <section className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
       <div>
-
-        <h1 className="text-3xl font-bold text-white">
+        <h1 className="text-3xl font-bold tracking-tight text-white lg:text-4xl">
           Workflows
         </h1>
 
-        <p className="mt-2 text-slate-400">
-          Manage and execute your workflow definitions.
+        <p className="mt-2 max-w-2xl text-base leading-relaxed text-slate-400">
+          Manage, organize, and execute your workflow definitions from one place.
         </p>
-
       </div>
 
-      <Button asChild className="gap-2">
-  <Link to="/workflows/create">
-    <Plus size={18} />
-    New Workflow
-  </Link>
-</Button>
-
+      <Button
+        asChild
+        size="lg"
+        className="gap-2 self-start sm:self-auto"
+      >
+        <Link to="/workflows/create">
+          <Plus size={20} />
+          New Workflow
+        </Link>
+      </Button>
     </section>
   );
 }

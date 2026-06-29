@@ -1,3 +1,4 @@
+
 import {
   Workflow,
   Activity,
@@ -9,14 +10,18 @@ import StatsCard from "./StatsCard";
 
 function StatsGrid() {
   return (
-    <section>
+    <section className="space-y-6">
+      <div>
+        <h2 className="text-xl font-semibold tracking-tight text-white">
+          Overview
+        </h2>
 
-      <h2 className="mb-4 text-lg font-semibold text-white">
-        Overview
-      </h2>
+        <p className="mt-1 text-sm text-slate-400">
+          Monitor your workflow activity and execution health.
+        </p>
+      </div>
 
-      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-
+      <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
         <StatsCard
           title="Total Workflows"
           value="24"
@@ -40,11 +45,10 @@ function StatsGrid() {
           value="5"
           icon={XCircle}
         />
-
       </div>
-
     </section>
   );
 }
 
 export default StatsGrid;
+

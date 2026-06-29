@@ -5,7 +5,7 @@ import TopNavbar from "@/components/navbar/TopNavbar";
 
 function DashboardLayout() {
   return (
-    <div className="flex h-screen bg-slate-950">
+    <div className="flex h-dvh overflow-hidden bg-[#020617]">
 
       {/* Sidebar */}
       <Sidebar />

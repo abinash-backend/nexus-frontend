@@ -3,6 +3,7 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
+  CardDescription,
 } from "@/components/ui/card";
 
 import { Button } from "@/components/ui/button";
@@ -16,52 +17,50 @@ import {
 
 function QuickActions() {
   return (
-    <Card className="border-slate-800 bg-slate-900/70">
-
+    <Card className="border-slate-800 bg-[#0F172A]">
       <CardHeader>
-        <CardTitle className="text-lg text-white">
+        <CardTitle className="text-xl font-semibold tracking-tight text-white">
           Quick Actions
         </CardTitle>
+
+        <CardDescription className="text-slate-400">
+          Quickly access the most common workflow operations.
+        </CardDescription>
       </CardHeader>
 
       <CardContent>
-
-        <div className="grid grid-cols-2 gap-4">
-
+        <div className="grid gap-4 sm:grid-cols-2">
           <Button
-            className="h-12 justify-start gap-2"
+            className="h-14 justify-start gap-3 rounded-xl"
           >
-            <Plus size={18} />
+            <Plus size={20} />
             New Workflow
           </Button>
 
           <Button
-            className="h-12 justify-start gap-2"
+            className="h-14 justify-start gap-3 rounded-xl"
           >
-            <Play size={18} />
-            Execute
+            <Play size={20} />
+            Execute Workflow
           </Button>
 
           <Button
             variant="secondary"
-            className="h-12 justify-start gap-2"
+            className="h-14 justify-start gap-3 rounded-xl"
           >
-            <BarChart3 size={18} />
+            <BarChart3 size={20} />
             Analytics
           </Button>
 
           <Button
             variant="secondary"
-            className="h-12 justify-start gap-2"
+            className="h-14 justify-start gap-3 rounded-xl"
           >
-            <Workflow size={18} />
+            <Workflow size={20} />
             View Workflows
           </Button>
-
         </div>
-
       </CardContent>
-
     </Card>
   );
 }
