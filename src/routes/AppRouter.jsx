@@ -7,6 +7,10 @@ import Login from "@/pages/auth/Login";
 import Register from "@/pages/auth/Register";
 
 import Dashboard from "@/pages/dashboard/Dashboard";
+import Workflows from "@/pages/workflows/Workflows";
+
+import CreateWorkflow from "@/pages/workflows/CreateWorkflow";
+import EditWorkflow from "@/pages/workflows/EditWorkflow";
 
 function AppRouter() {
   return (
@@ -19,9 +23,13 @@ function AppRouter() {
           <Route path="/register" element={<Register />} />
         </Route>
 
-        {/* Dashboard Routes */}
+        {/* Protected Application Routes */}
         <Route element={<DashboardLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/workflows" element={<Workflows />} />
+          <Route path="/workflows/create" element={<CreateWorkflow />} />
+          <Route path="/workflows/:workflowId/edit" element={<EditWorkflow />}
+/>
         </Route>
 
       </Routes>
