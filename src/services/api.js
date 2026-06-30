@@ -19,7 +19,16 @@ api.interceptors.request.use(
   (config) => {
     const token = tokenStorage.getToken();
 
-    if (token) {
+    const publicEndpoints = [
+      API_CONFIG.ENDPOINTS.LOGIN,
+      API_CONFIG.ENDPOINTS.REGISTER,
+    ];
+
+    const isPublicEndpoint = publicEndpoints.some((endpoint) =>
+      config.url?.startsWith(endpoint)
+    );
+
+    if (token && !isPublicEndpoint) {
       config.headers.Authorization = `Bearer ${token}`;
     }
 
@@ -34,9 +43,7 @@ api.interceptors.request.use(
  */
 api.interceptors.response.use(
   (response) => response,
-  (error) => {
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
 
 export default api;

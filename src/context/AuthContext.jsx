@@ -13,12 +13,20 @@ export function AuthProvider({ children }) {
   }, []);
 
   async function login(credentials) {
-    const { accessToken } = await authService.login(credentials);
+  const response = await authService.login(credentials);
 
-    tokenStorage.setToken(accessToken);
+  tokenStorage.setToken(response.accessToken);
 
-    setIsAuthenticated(true);
-  }
+  setIsAuthenticated(true);
+
+  return response;
+ }
+
+ async function register(user) {
+  const response = await authService.register(user);
+
+  return response;
+}
 
   function logout() {
     tokenStorage.removeToken();
@@ -30,11 +38,12 @@ export function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider
-      value={{
-        isAuthenticated,
-        login,
-        logout,
-      }}
+    value={{
+     isAuthenticated,
+     login,
+     register,
+     logout,
+    }}
     >
       {children}
     </AuthContext.Provider>
