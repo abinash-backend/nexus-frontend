@@ -4,6 +4,8 @@ export const API_CONFIG = {
   ENDPOINTS: {
     LOGIN: "/api/v1/auth/login",
     REGISTER: "/api/v1/auth/register",
+    LOGOUT: "/api/v1/auth/logout",
+    REFRESH: "/api/v1/auth/refresh",
   },
 
   TIMEOUT: 10000,

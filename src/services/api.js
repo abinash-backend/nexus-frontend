@@ -17,7 +17,7 @@ const api = axios.create({
  */
 api.interceptors.request.use(
   (config) => {
-    const token = tokenStorage.getToken();
+    const token = tokenStorage.getAccessToken();
 
     const publicEndpoints = [
       API_CONFIG.ENDPOINTS.LOGIN,

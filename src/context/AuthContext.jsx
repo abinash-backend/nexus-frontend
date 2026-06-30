@@ -12,15 +12,18 @@ export function AuthProvider({ children }) {
     setIsAuthenticated(tokenStorage.hasToken());
   }, []);
 
-  async function login(credentials) {
+ async function login(credentials) {
   const response = await authService.login(credentials);
 
-  tokenStorage.setToken(response.accessToken);
+  tokenStorage.setTokens(
+    response.accessToken,
+    response.refreshToken
+  );
 
   setIsAuthenticated(true);
 
   return response;
- }
+}
 
  async function register(user) {
   const response = await authService.register(user);
@@ -28,13 +31,22 @@ export function AuthProvider({ children }) {
   return response;
 }
 
-  function logout() {
-    tokenStorage.removeToken();
 
-    authService.logout();
 
+async function logout() {
+  const refreshToken = tokenStorage.getRefreshToken();
+
+  try {
+    if (refreshToken) {
+      await authService.logout({
+        refreshToken,
+      });
+    }
+  } finally {
+    tokenStorage.removeTokens();
     setIsAuthenticated(false);
   }
+}
 
   return (
     <AuthContext.Provider

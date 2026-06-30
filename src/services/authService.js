@@ -20,7 +20,12 @@ export const authService = {
     return response.data;
   },
 
-  logout() {
-    // We'll implement this when AuthContext is ready.
-  },
+ async logout(refreshToken) {
+  const response = await api.post(
+    API_CONFIG.ENDPOINTS.LOGOUT,
+    refreshToken
+  );
+
+  return response.data;
+}
 };
