@@ -1,9 +1,9 @@
 import { Navigate, Outlet } from "react-router-dom";
 
-function ProtectedRoute() {
+import { useAuth } from "@/context/AuthContext";
 
-  // TODO: Replace with real authentication logic
-  const isAuthenticated = true;
+function ProtectedRoute() {
+  const { isAuthenticated } = useAuth();
 
   if (!isAuthenticated) {
     return <Navigate to="/" replace />;

@@ -39,4 +39,4 @@ function WorkflowPerformanceChart() {
   );
 }
 
-export default WorkflowPerformanceChart;
+export default WorkflowPerformanceChart; 
