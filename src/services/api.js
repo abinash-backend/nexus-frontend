@@ -20,8 +20,8 @@ api.interceptors.request.use(
     const token = tokenStorage.getAccessToken();
 
     const publicEndpoints = [
-      API_CONFIG.ENDPOINTS.LOGIN,
-      API_CONFIG.ENDPOINTS.REGISTER,
+      API_CONFIG.ENDPOINTS.AUTH.LOGIN,
+      API_CONFIG.ENDPOINTS.AUTH.REGISTER,
     ];
 
     const isPublicEndpoint = publicEndpoints.some((endpoint) =>

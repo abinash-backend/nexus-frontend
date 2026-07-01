@@ -1,27 +1,21 @@
-
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Play, Pencil, Trash2 } from "lucide-react";
+import { Play, Pencil, Archive } from "lucide-react";
 
-function WorkflowRow({
-  workflow,
-  status,
-  lastRun,
-  updated,
-}) {
+function WorkflowRow({ task, onRefresh }) {
   const getStatusBadge = (status) => {
     switch (status) {
-      case "Active":
+      case "ACTIVE":
         return (
           <Badge className="bg-emerald-500/15 text-emerald-400 hover:bg-emerald-500/20">
             Active
           </Badge>
         );
 
-      case "Inactive":
+      case "ARCHIVED":
         return (
           <Badge className="bg-slate-500/15 text-slate-300 hover:bg-slate-500/20">
-            Inactive
+            Archived
           </Badge>
         );
 
@@ -30,22 +24,57 @@ function WorkflowRow({
     }
   };
 
+  const getPriorityBadge = (priority) => {
+    switch (priority) {
+      case "HIGH":
+        return (
+          <Badge className="bg-red-500/15 text-red-400">
+            High
+          </Badge>
+        );
+
+      case "MEDIUM":
+        return (
+          <Badge className="bg-amber-500/15 text-amber-400">
+            Medium
+          </Badge>
+        );
+
+      case "LOW":
+        return (
+          <Badge className="bg-slate-500/15 text-slate-300">
+            Low
+          </Badge>
+        );
+
+      default:
+        return <Badge>{priority}</Badge>;
+    }
+  };
+
+  const formatDate = (date) =>
+    new Date(date).toLocaleDateString();
+
   return (
     <tr className="border-b border-slate-800 transition-colors hover:bg-slate-800/30">
       <td className="py-4 font-medium text-white">
-        {workflow}
+        {task.title}
+      </td>
+
+      <td className="py-4 text-slate-300">
+        {task.frequency}
       </td>
 
       <td className="py-4">
-        {getStatusBadge(status)}
+        {getPriorityBadge(task.priority)}
+      </td>
+
+      <td className="py-4">
+        {getStatusBadge(task.status)}
       </td>
 
       <td className="py-4 text-slate-300">
-        {lastRun}
-      </td>
-
-      <td className="py-4 text-slate-300">
-        {updated}
+        {formatDate(task.updatedAt)}
       </td>
 
       <td className="py-4">
@@ -71,7 +100,7 @@ function WorkflowRow({
             variant="ghost"
             className="hover:bg-red-500/10 hover:text-red-400"
           >
-            <Trash2 size={16} />
+            <Archive size={16} />
           </Button>
         </div>
       </td>
@@ -80,4 +109,3 @@ function WorkflowRow({
 }
 
 export default WorkflowRow;
-
